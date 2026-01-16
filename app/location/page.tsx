@@ -1,14 +1,19 @@
+'use client';
+
+import { useLanguage } from '@/context/LanguageContext';
+
 export default function LocationPage() {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-[#F3F4F6]">
       {/* Hero Section */}
       <section className="relative pt-32 pb-16 px-6">
         <div className="max-w-7xl mx-auto text-center">
           <h1 className="text-5xl md:text-6xl lg:text-8xl font-black text-[#002FA7] tracking-tight mb-4">
-            THE HQ
+            {t.locationPage.title}
           </h1>
           <p className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-800 tracking-wide">
-            22BIS BD STALINGRAD, NICE
+            {t.locationPage.subtitle}
           </p>
         </div>
       </section>
@@ -40,7 +45,7 @@ export default function LocationPage() {
             {/* Address Block */}
             <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#002FA7]">
               <h3 className="text-sm font-bold text-[#002FA7] mb-3 tracking-wider uppercase">
-                Address
+                {t.locationPage.addressBlock}
               </h3>
               <p className="text-3xl md:text-4xl font-black text-gray-900 leading-tight">
                 22BIS BD<br />STALINGRAD
@@ -53,16 +58,16 @@ export default function LocationPage() {
             {/* Hours Block */}
             <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#002FA7]">
               <h3 className="text-sm font-bold text-[#002FA7] mb-3 tracking-wider uppercase">
-                Opening Hours
+                {t.locationPage.hoursBlock}
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-gray-900">Mon - Sat</span>
+                  <span className="text-lg font-bold text-gray-900">{t.locationPage.monSat}</span>
                   <span className="text-lg font-semibold text-gray-700">08:30 - 17:30</span>
                 </div>
                 <div className="h-px bg-gray-200"></div>
                 <div className="flex justify-between items-center">
-                  <span className="text-lg font-bold text-gray-900">Sunday</span>
+                  <span className="text-lg font-bold text-gray-900">{t.locationPage.sunday}</span>
                   <span className="text-lg font-semibold text-gray-700">09:30 - 17:30</span>
                 </div>
               </div>
@@ -71,18 +76,18 @@ export default function LocationPage() {
             {/* Transport/Contact Block */}
             <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#002FA7]">
               <h3 className="text-sm font-bold text-[#002FA7] mb-3 tracking-wider uppercase">
-                Get Here
+                {t.locationPage.transportBlock}
               </h3>
               <div className="space-y-4">
                 <div>
-                  <p className="text-sm font-semibold text-gray-500 mb-1">TRAM</p>
+                  <p className="text-sm font-semibold text-gray-500 mb-1">{t.locationPage.tram}</p>
                   <p className="text-xl font-bold text-gray-900">
-                    L2: Port Lympia
+                    {t.locationPage.tramLine}
                   </p>
                 </div>
                 <div className="h-px bg-gray-200"></div>
                 <div>
-                  <p className="text-sm font-semibold text-gray-500 mb-1">EMAIL</p>
+                  <p className="text-sm font-semibold text-gray-500 mb-1">{t.locationPage.email}</p>
                   <a 
                     href="mailto:hello@cafewithsmile.com"
                     className="text-lg font-bold text-[#002FA7] hover:underline break-all"
@@ -123,7 +128,7 @@ export default function LocationPage() {
               d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" 
             />
           </svg>
-          OPEN IN GOOGLE MAPS
+          {t.locationPage.cta}
         </a>
       </div>
     </div>

@@ -3,13 +3,15 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Navbar() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { language, t, toggleLanguage } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,10 +22,10 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: 'Full Menu', href: '/menu' },
-    { name: 'Run Club', href: '/run-club' },
-    { name: 'Merch', href: '/merch' },
-    { name: 'Location', href: '/location' },
+    { name: t.nav.menu, href: '/menu' },
+    { name: t.nav.runClub, href: '/run-club' },
+    { name: t.nav.merch, href: '/merch' },
+    { name: t.nav.location, href: '/location' },
   ];
 
   const isRunClubPage = pathname === '/run-club';
@@ -58,8 +60,24 @@ export default function Navbar() {
               {link.name}
             </a>
           ))}
+          
+          {/* Language Switcher */}
+          <button
+            onClick={toggleLanguage}
+            className={`flex items-center gap-2 px-3 py-1.5 rounded-full border-2 transition-all ${
+              scrolled || isRunClubPage 
+                ? 'border-stark-white text-stark-white hover:bg-stark-white hover:text-raw-black' 
+                : 'border-raw-black text-raw-black hover:bg-raw-black hover:text-stark-white'
+            }`}
+          >
+            <Globe size={14} />
+            <span className="font-bold text-xs">
+              {language === 'en' ? 'FR' : 'EN'}
+            </span>
+          </button>
+          
           <Button variant="primary" className="ml-4">
-            Order Now
+            {t.nav.orderNow}
           </Button>
         </div>
 
@@ -94,8 +112,20 @@ export default function Navbar() {
                 {link.name}
               </a>
             ))}
+            
+            {/* Mobile Language Switcher */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-4 py-2 rounded-full border-2 border-stark-white text-stark-white hover:bg-stark-white hover:text-raw-black transition-all w-fit"
+            >
+              <Globe size={16} />
+              <span className="font-bold text-sm">
+                {language === 'en' ? 'Français' : 'English'}
+              </span>
+            </button>
+            
             <Button variant="primary" className="mt-2">
-              Order Now
+              {t.nav.orderNow}
             </Button>
           </div>
         </motion.div>

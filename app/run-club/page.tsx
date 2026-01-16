@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { Coffee, MapPin, Gauge, Package, ExternalLink } from "lucide-react";
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function RunClubPage() {
+  const { t } = useLanguage();
   return (
     <div className="min-h-screen bg-[#111] text-white">
       {/* Hero Section */}
@@ -34,9 +36,9 @@ export default function RunClubPage() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.8 }}
           >
-            RUN. COFFEE.
+            {t.runClubPage.title}
             <br />
-            REPEAT.
+            {t.runClubPage.subtitle}
           </motion.h1>
           
           <motion.div
@@ -45,8 +47,8 @@ export default function RunClubPage() {
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5, duration: 0.8 }}
           >
-            <p className="text-orange-400">EVERY SUNDAY</p>
-            <p className="text-white/80">09:30 / ALL PACES WELCOME</p>
+            <p className="text-orange-400">{t.runClubPage.schedule}</p>
+            <p className="text-white/80">{t.runClubPage.time}</p>
           </motion.div>
         </motion.div>
 
@@ -72,39 +74,39 @@ export default function RunClubPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          THE MANIFEST
+          {t.runClubPage.manifest}
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {[
             {
               icon: MapPin,
-              title: "MEETING POINT",
-              value: "22bis Bd Stalingrad",
+              title: t.runClubPage.meetingPoint,
+              value: t.runClubPage.address,
               delay: 0.1,
             },
             {
               icon: Gauge,
-              title: "DISTANCE",
-              value: "5K & 10K Loops",
+              title: t.runClubPage.distance,
+              value: t.runClubPage.distanceValue,
               delay: 0.2,
             },
             {
               icon: Coffee,
-              title: "PACE",
+              title: t.runClubPage.pace,
               value: (
                 <>
-                  Chill Group <span className="text-orange-400">(6:00)</span>
+                  {t.runClubPage.chillGroup} <span className="text-orange-400">(6:00)</span>
                   <br />
-                  Fast Group <span className="text-orange-400">(4:30)</span>
+                  {t.runClubPage.fastGroup} <span className="text-orange-400">(4:30)</span>
                 </>
               ),
               delay: 0.3,
             },
             {
               icon: Package,
-              title: "BAG DROP",
-              value: "Available at the Cafe",
+              title: t.runClubPage.bagDrop,
+              value: t.runClubPage.bagDropValue,
               delay: 0.4,
             },
           ].map((item, index) => (
@@ -136,7 +138,7 @@ export default function RunClubPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          THE ROUTE
+          {t.runClubPage.route}
         </motion.h2>
 
         <motion.div
@@ -166,9 +168,9 @@ export default function RunClubPage() {
             transition={{ delay: 0.3, duration: 0.6 }}
           >
             <p className="text-[#002FA7] font-bold tracking-widest text-sm">
-              ROUTE: PROMENADE DES ANGLAIS
+              {t.runClubPage.routeName}
             </p>
-            <p className="text-white/80 text-xs mt-1">[FLAT]</p>
+            <p className="text-white/80 text-xs mt-1">{t.runClubPage.routeType}</p>
           </motion.div>
         </motion.div>
       </section>
@@ -182,7 +184,7 @@ export default function RunClubPage() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          JOIN THE CREW
+          {t.runClubPage.joinCrew}
         </motion.h2>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
@@ -196,13 +198,13 @@ export default function RunClubPage() {
           >
             <div className="text-center">
               <p className="text-sm font-bold tracking-widest text-white/60 mb-4">
-                LATEST STATS
+                {t.runClubPage.latestStats}
               </p>
               <div className="border-2 border-dashed border-white/30 p-12 rounded-lg">
                 <p className="text-white/50 text-sm">
-                  [STRAVA CLUB WIDGET]
+                  {t.runClubPage.stravaWidget}
                   <br />
-                  <span className="text-xs">Iframe will be added here</span>
+                  <span className="text-xs">{t.runClubPage.stravaNote}</span>
                 </p>
               </div>
             </div>
@@ -223,7 +225,7 @@ export default function RunClubPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="relative z-10">JOIN STRAVA CLUB</span>
+              <span className="relative z-10">{t.runClubPage.joinStrava}</span>
               <ExternalLink className="w-5 h-5 relative z-10" />
               <div className="absolute inset-0 bg-gradient-to-r from-orange-600 to-orange-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
@@ -235,14 +237,14 @@ export default function RunClubPage() {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              <span className="relative z-10">JOIN WHATSAPP GROUP</span>
+              <span className="relative z-10">{t.runClubPage.joinWhatsApp}</span>
               <ExternalLink className="w-5 h-5 relative z-10" />
               <div className="absolute inset-0 bg-gradient-to-r from-green-600 to-green-500 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </motion.a>
 
             {/* Info Text */}
             <p className="text-white/60 text-sm text-center mt-4">
-              Connect with the community, track your runs, and never miss a session.
+              {t.runClubPage.communityNote}
             </p>
           </motion.div>
         </div>
@@ -258,10 +260,10 @@ export default function RunClubPage() {
           transition={{ duration: 0.6 }}
         >
           <p className="text-2xl md:text-3xl font-light mb-4">
-            First time? <span className="font-bold italic text-orange-400">Just show up.</span>
+            {t.runClubPage.firstTime} <span className="font-bold italic text-orange-400">{t.runClubPage.firstTimeHighlight}</span>
           </p>
           <p className="text-white/60">
-            No registration needed. We run together, we finish together.
+            {t.runClubPage.firstTimeNote}
           </p>
         </motion.div>
       </section>

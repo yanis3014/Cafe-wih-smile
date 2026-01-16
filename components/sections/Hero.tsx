@@ -3,8 +3,10 @@
 import { motion } from 'framer-motion';
 import Link from 'next/link';
 import Button from '@/components/ui/Button';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Hero() {
+  const { t } = useLanguage();
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden">
       {/* Video Background Placeholder - Replace with actual video */}
@@ -21,15 +23,15 @@ export default function Hero() {
           transition={{ duration: 0.8 }}
         >
           <h1 className="text-5xl md:text-7xl lg:text-9xl font-black leading-none mb-6">
-            <span className="block text-raw-black">NICE PEOPLE</span>
-            <span className="block text-electric-blue">ONLY.</span>
+            <span className="block text-raw-black">{t.hero.title}</span>
+            <span className="block text-electric-blue">{t.hero.subtitle}</span>
           </h1>
           <p className="text-xl md:text-2xl font-technical text-raw-black mb-8 tracking-wide">
-            ICE. COFFEE. VIBES. NICE.
+            {t.hero.tagline}
           </p>
           <Link href="/menu">
             <Button variant="primary" className="text-base">
-              Explore Menu
+              {t.hero.cta}
             </Button>
           </Link>
         </motion.div>
@@ -39,16 +41,16 @@ export default function Hero() {
       <div className="absolute bottom-0 left-0 right-0 bg-raw-black text-stark-white py-4 overflow-hidden">
         <div className="flex whitespace-nowrap animate-marquee">
           <span className="font-technical text-sm tracking-widest px-8">
-            OPEN DAILY 8:30-17:30 — ICE. COFFEE. VIBES. NICE.
+            {t.hero.marquee}
           </span>
           <span className="font-technical text-sm tracking-widest px-8">
-            OPEN DAILY 8:30-17:30 — ICE. COFFEE. VIBES. NICE.
+            {t.hero.marquee}
           </span>
           <span className="font-technical text-sm tracking-widest px-8">
-            OPEN DAILY 8:30-17:30 — ICE. COFFEE. VIBES. NICE.
+            {t.hero.marquee}
           </span>
           <span className="font-technical text-sm tracking-widest px-8">
-            OPEN DAILY 8:30-17:30 — ICE. COFFEE. VIBES. NICE.
+            {t.hero.marquee}
           </span>
         </div>
       </div>

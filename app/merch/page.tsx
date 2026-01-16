@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ShoppingBag, Tag, Package } from "lucide-react";
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function MerchPage() {
+  const { t } = useLanguage();
   const products = [
     {
       id: 1,
@@ -52,23 +54,23 @@ export default function MerchPage() {
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <p className="text-sm font-bold tracking-widest text-raw-black/60 mb-4">
-              CAFE WITH SMILE
+              {t.merchPage.brand}
             </p>
             <h1 className="text-5xl md:text-6xl lg:text-8xl font-black italic tracking-tight mb-6">
-              WEAR THE
+              {t.merchPage.title}
               <br />
-              <span className="text-electric-blue">SMILE.</span>
+              <span className="text-electric-blue">{t.merchPage.titleHighlight}</span>
             </h1>
             <div className="border-l-4 border-electric-blue pl-6 mb-8">
-              <p className="text-2xl font-bold text-raw-black mb-2">DROP 001</p>
+              <p className="text-2xl font-bold text-raw-black mb-2">{t.merchPage.drop}</p>
               <p className="text-raw-black/70 font-light">
-                Limited Edition Collection
+                {t.merchPage.subtitle}
               </p>
             </div>
             <div className="flex gap-4 items-center">
               <ShoppingBag className="text-electric-blue" size={24} />
               <p className="text-sm font-mono text-raw-black/60">
-                AVAILABLE NOW / LIMITED STOCK
+                {t.merchPage.available}
               </p>
             </div>
           </motion.div>
@@ -90,7 +92,7 @@ export default function MerchPage() {
           />
           {/* Overlay Badge */}
           <div className="absolute bottom-8 left-8 bg-electric-blue text-stark-white px-6 py-3 border-2 border-raw-black">
-            <p className="font-bold tracking-wider text-sm">DESIGNED IN NICE</p>
+            <p className="font-bold tracking-wider text-sm">{t.merchPage.designedIn}</p>
           </div>
         </motion.div>
       </section>
@@ -105,10 +107,10 @@ export default function MerchPage() {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black italic mb-4">
-            THE DROP
+            {t.merchPage.theDrop}
           </h2>
           <p className="text-raw-black/60 font-mono text-sm">
-            [3 ITEMS AVAILABLE]
+            {t.merchPage.itemsAvailable}
           </p>
         </motion.div>
 
@@ -180,7 +182,7 @@ export default function MerchPage() {
                       : "bg-electric-blue text-stark-white hover:bg-raw-black hover:text-electric-blue"
                   }`}
                 >
-                  {product.soldOut ? "SOLD OUT" : "ADD TO CART"}
+                  {product.soldOut ? t.merchPage.soldOut : t.merchPage.addToCart}
                 </motion.button>
               </div>
             </motion.div>
@@ -199,13 +201,13 @@ export default function MerchPage() {
         >
           <Package className="mx-auto mb-6 text-electric-blue" size={48} />
           <h3 className="text-3xl md:text-4xl font-black italic mb-4">
-            THE MANIFESTO
+            {t.merchPage.manifesto}
           </h3>
           <p className="text-xl font-light text-raw-black/80 mb-2">
-            Designed in Nice. Worn Everywhere.
+            {t.merchPage.manifestoTitle}
           </p>
           <p className="text-sm font-mono text-raw-black/60">
-            LIMITED QUANTITIES / EXCLUSIVE DROPS
+            {t.merchPage.manifestoSubtitle}
           </p>
         </motion.div>
       </section>

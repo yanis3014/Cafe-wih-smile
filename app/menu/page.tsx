@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Leaf, Flame, Coffee } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 // Menu Data Structure
 const MENU_ITEMS = [
@@ -189,8 +190,21 @@ type Category = 'All' | 'Hot' | 'Iced' | 'Food' | 'Sweets';
 
 export default function MenuPage() {
   const [activeCategory, setActiveCategory] = useState<Category>('All');
+  const { t } = useLanguage();
 
   const categories: Category[] = ['All', 'Hot', 'Iced', 'Food', 'Sweets'];
+  
+  // Map categories to translated names
+  const getCategoryName = (cat: Category) => {
+    const map: Record<Category, string> = {
+      'All': t.menuPage.categories.all,
+      'Hot': t.menuPage.categories.hot,
+      'Iced': t.menuPage.categories.iced,
+      'Food': t.menuPage.categories.food,
+      'Sweets': t.menuPage.categories.sweets,
+    };
+    return map[cat];
+  };
 
   const filteredItems = activeCategory === 'All' 
     ? MENU_ITEMS 
@@ -201,7 +215,7 @@ export default function MenuPage() {
       {/* Page Title */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 mb-8">
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-center mb-6">
-          FULL <span className="text-electric-blue">SPEC SHEET</span>
+          {t.menuPage.title} <span className="text-electric-blue">{t.menuPage.titleHighlight}</span>
         </h1>
         
         {/* Category Filter */}
@@ -218,7 +232,7 @@ export default function MenuPage() {
                   : 'bg-stark-white text-raw-black hover:bg-gray-100'
               }`}
             >
-              {category}
+              {getCategoryName(category)}
             </motion.button>
           ))}
         </div>
