@@ -13,8 +13,8 @@ export const translations = {
     
     // Hero Section
     hero: {
-      title: 'A COFFEE WITH ',
-      subtitle: 'SMILE.',
+      title: 'NO COFFEE ',
+      subtitle: 'NO SMILE.',
       tagline: 'ICE. COFFEE. VIBES. NICE.',
       cta: 'Explore Menu',
       marquee: 'OPEN DAILY 8:30-17:30 — ICE. COFFEE. VIBES. NICE.',
@@ -178,8 +178,8 @@ export const translations = {
     
     // Hero Section
     hero: {
-      title: 'UN CAFE AVEC LE ',
-      subtitle: 'SOURIRE.',
+      title: 'PAS DE CAFE ',
+      subtitle: 'PAS DE SOURIRE',
       tagline: 'GLACE. CAFÉ. AMBIANCE. NICE.',
       cta: 'Voir le Menu',
       marquee: 'OUVERT TOUS LES JOURS 8:30-17:30 — GLACE. CAFÉ. AMBIANCE. NICE.',
